@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorTheme">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.02"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="Create Account"
+            android:textAlignment="center"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="35dp" />
+
+        <EditText
+            android:id="@+id/nameupTV"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Username"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/proxima_nova"
+            android:inputType="textPersonName"
+            android:textColor="@color/colorTextPrimary"
+            android:textColorHint="@color/colorMainTheme" />
+
+        <EditText
+            android:id="@+id/emailupTV"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Email"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorTextPrimary"
+            android:textColorHint="@color/colorMainTheme" />
+
+        <EditText
+            android:id="@+id/phoneupTV"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Phone Number"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:inputType="phone"
+            android:textColor="@color/colorTextPrimary"
+            android:textColorHint="@color/colorMainTheme" />
+
+        <EditText
+            android:id="@+id/passwordupTV"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:textColorHint="@color/colorMainTheme" />
+
+        <EditText
+            android:id="@+id/repasswordupTV"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Retry Password"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:inputType="textPassword"
+            android:textColor="@color/colorTextPrimary"
+            android:textColorHint="@color/colorMainTheme" />
+
+        <Button
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/border_radius_btn"
+            android:backgroundTint="@color/colorBtn2"
+            android:text="Continue"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textAllCaps="false"
+            android:fontFamily="@font/proxima_nova"
+            android:textColor="@color/colorTextPrimary" />
+    </LinearLayout>
+</LinearLayout>

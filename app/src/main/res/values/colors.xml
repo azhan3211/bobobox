@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorTheme">#04a098</color>
+    <color name="colorBtn">#5CBEB8</color>
+    <color name="colorBtn2">#0CBEA9</color>
+    <color name="colorFacebook">#295497</color>
+
+    <color name="colorTextPrimary">#fff</color>
+    <color name="colorTextPrimaryBlack">#000</color>
+    <color name="colorTextDay">#f00</color>
+    <color name="colorTextPriceTotal">#f00</color>
+    <color name="colorLogout">#f00</color>
+    <color name="colorTextTheme">#06A098</color>
+    <color name="colorTextLink">#00aaff</color>
+    <color name="colorTextHint">#808080</color>
+
+    <color name="colorShadow">#d9d9d9</color>
+
+    <color name="colorUnselected">#a9a9a9</color>
+    <color name="colorSelected">#fff</color>
+
+    <color name="colorBackgroundSpecialPromoPersen">#f00</color>
+
+    <color name="colorTimeSelect">#e6e6e6</color>
+    <color name="colorBackgroundW">#fff</color>
+    <color name="colorMainTheme">#e6e6e6</color>
+
+    <color name="colorLineBreaker">#808080</color>
+
+</resources>

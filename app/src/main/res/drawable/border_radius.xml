@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<shape xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:shape="rectangle" >-->
+
+    <!--<corners-->
+        <!--android:bottomLeftRadius="15dp"-->
+        <!--android:bottomRightRadius="15dp"-->
+        <!--android:radius="60dp"-->
+        <!--android:topLeftRadius="15dp"-->
+        <!--android:topRightRadius="15dp" />-->
+
+    <!--<solid android:color="#0cbea9" />-->
+
+    <!--<padding-->
+        <!--android:bottom="0dp"-->
+        <!--android:left="0dp"-->
+        <!--android:right="0dp"-->
+        <!--android:top="0dp" />-->
+
+    <!--<size-->
+        <!--android:height="60dp"-->
+        <!--android:width="270dp" />-->
+
+<!--</shape>-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<item>
+    <layer-list>
+        <item>
+            <shape android:shape="rectangle">
+                <solid android:color="@color/colorShadow"/>
+                <corners
+                    android:bottomLeftRadius="10dp"
+                    android:bottomRightRadius="10dp"
+                    android:radius="60dp"
+                    android:topLeftRadius="10dp"
+                    android:topRightRadius="10dp" />
+            </shape>
+        </item>
+        <item android:left="0dp" android:right="0dp" android:top="0dp" android:bottom="0dp">
+            <shape android:shape="rectangle">
+                <solid android:color="#FFFFFF"/>
+                <corners
+                    android:bottomLeftRadius="10dp"
+                    android:bottomRightRadius="10dp"
+                    android:radius="60dp"
+                    android:topLeftRadius="10dp"
+                    android:topRightRadius="10dp" />
+                <size
+                    android:height="60dp"
+                    android:width="270dp" />
+            </shape>
+        </item>
+    </layer-list>
+</item>
+</selector>

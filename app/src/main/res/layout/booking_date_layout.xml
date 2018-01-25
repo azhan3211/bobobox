@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorMainTheme">
+
+    <android.support.v7.widget.ActionBarContainer
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorTheme">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorTheme"></LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Booking"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:textColor="@color/colorTextPrimary"
+            android:layout_gravity="center"/>
+    </android.support.v7.widget.ActionBarContainer>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/searchInputRL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <EditText
+                        android:id="@+id/boboboxBCityDateET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@+id/btnSearchNearDate"
+                        android:background="@drawable/border_radius_search"
+                        android:drawablePadding="10dp"
+                        android:layout_weight="1"
+                        android:hint="Bobobox near you...."
+                        android:includeFontPadding="false"
+                        android:paddingLeft="15dp"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:gravity="center_vertical"
+                        android:fontFamily="@font/proxima_nova"
+                        android:textColorHint="#737373" />
+
+                    <ImageView
+                        android:id="@+id/btnSearchNearDate"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="1dp"
+                        android:background="@drawable/round_button"
+                        app:srcCompat="@drawable/ic_search_map" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <RelativeLayout
+                        android:id="@+id/dateInSelect"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_radius_white">
+
+                        <LinearLayout
+                            android:id="@+id/bookingDateInformation"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="25dp"
+                            android:background="@drawable/border_radius_white_booking"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/dateInBookingTV"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="20"
+                                    android:textColor="@color/colorTheme"
+                                    android:textSize="40dp" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/dateInYearBookingTV"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="20dp"
+                                        android:gravity="left|center"
+                                        android:text="Sep, 2017"
+                                        android:textColor="@color/colorTheme" />
+
+                                    <TextView
+                                        android:id="@+id/dateInDayBookingTV"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="20dp"
+                                        android:gravity="left|center"
+                                        android:text="Wednesday"
+                                        android:textColor="@color/colorTextDay" />
+                                </LinearLayout>
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@drawable/border_radius_booking"
+                            android:gravity="center"
+                            android:text="Date check-in"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="15dp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/dateOutSelect"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_radius_white">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="25dp"
+                            android:background="@drawable/border_radius_white_booking"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/dateOutBookingTV"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="21"
+                                    android:textColor="@color/colorTheme"
+                                    android:textSize="40dp" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/dateOutYearBookingTV"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="20dp"
+                                        android:gravity="left|center"
+                                        android:text="Sep, 2017"
+                                        android:textColor="@color/colorTheme" />
+
+                                    <TextView
+                                        android:id="@+id/dateOutDayBookingTV"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="20dp"
+                                        android:gravity="left|center"
+                                        android:text="Thursday"
+                                        android:textColor="@color/colorTextDay" />
+                                </LinearLayout>
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@drawable/border_radius_booking"
+                            android:gravity="center"
+                            android:text="Date check-out"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="15dp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <RelativeLayout
+                        android:id="@+id/boboboxDateSkySelect"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_radius_white">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="25dp"
+                            android:background="@drawable/border_radius_white_booking"
+                            android:gravity="bottom">
+
+                            <ImageView
+                                android:id="@+id/boboboxBDSkyIV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="60dp"
+                                app:srcCompat="@drawable/ic_sky"
+                                android:tint="@color/colorTheme"/>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@drawable/border_radius_booking"
+                            android:gravity="center"
+                            android:text="Bobobox Sky"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="15dp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/boboboxDateEarthSelect"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_radius_white">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="25dp"
+                            android:background="@drawable/border_radius_white_booking"
+                            android:gravity="bottom">
+
+                            <ImageView
+                                android:id="@+id/boboboxBDEarthIV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="60dp"
+                                app:srcCompat="@drawable/ic_earth" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@drawable/border_radius_booking"
+                            android:gravity="center"
+                            android:text="Bobobox Earth"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="15dp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/dateNumberRoom"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="40dp"
+                                        android:background="@drawable/border_radius_search"
+                                        android:hint="Room"
+                                        android:inputType="number"
+                                        android:paddingLeft="45dp"
+                                        android:paddingRight="45dp"
+                                        android:textSize="20sp"
+                                        android:gravity="center"
+                                        android:fontFamily="@font/proxima_nova"
+                                        android:textAlignment="center" />
+
+                                    <ImageView
+                                        android:id="@+id/dateBtnMinusRoom"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/border_radius_search"
+                                        app:srcCompat="@drawable/ic_minus" />
+
+                                    <ImageView
+                                        android:id="@+id/dateBtnPlusRoom"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/border_radius_search"
+                                        app:srcCompat="@drawable/ic_plus" />
+                                </RelativeLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/dateNumberPerson"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="40dp"
+                                        android:background="@drawable/border_radius_search"
+                                        android:hint="Guest"
+                                        android:inputType="number"
+                                        android:paddingLeft="45dp"
+                                        android:paddingRight="45dp"
+                                        android:textSize="20sp"
+                                        android:gravity="center"
+                                        android:fontFamily="@font/proxima_nova"
+                                        android:textAlignment="center" />
+
+                                    <ImageView
+                                        android:id="@+id/dateBtnMinusPerson"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/border_radius_search"
+                                        app:srcCompat="@drawable/ic_minus" />
+
+                                    <ImageView
+                                        android:id="@+id/dateBtnPlusPerson"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/border_radius_search"
+                                        app:srcCompat="@drawable/ic_plus" />
+                                </RelativeLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="right"
+                android:layout_alignParentBottom="true">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></RelativeLayout>
+
+                <Button
+                    android:id="@+id/btnSearchDate"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_radius_btn"
+                    android:text="Search"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/proxima_nova"
+                    android:textColor="@color/colorTextPrimary"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "722396632352",
+    "project_id": "bobobox-192215"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722396632352:android:5928ebcd7a1eb48f",
+        "android_client_info": {
+          "package_name": "com.example.bobobox.bobobox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722396632352-a692bel5261etns6pinhb2rg0la6bl82.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bobobox.bobobox",
+            "certificate_hash": "540c35d3ad26cbf47b7912649f54e690f3eba45a"
+          }
+        },
+        {
+          "client_id": "722396632352-drm5uc1s6c3fiacdusgscpk84qjp674u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeRU0QeYYV5UDb2gDEGiH_YBTjNZ6W-xw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
