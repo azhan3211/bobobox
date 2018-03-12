@@ -17,6 +17,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
                 <RelativeLayout
+                    android:layout_marginTop="50dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -26,31 +27,7 @@
                         android:layout_height="200dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        app:srcCompat="@drawable/main_logo" />
-
-                    <TextView
-                        android:id="@+id/editText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/imageView"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginBottom="10dp"
-                        android:ems="10"
-                        android:text="bobobox"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorTextPrimary"
-                        android:textSize="50sp" />
-
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/imageView"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginBottom="0dp"
-                        android:text="Rest Anytime Anywhere"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorTextPrimary" />
+                        app:srcCompat="@drawable/ic_logo" />
                 </RelativeLayout>
 
                 <LinearLayout

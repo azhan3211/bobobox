@@ -49,8 +49,9 @@
                     android:paddingRight="10dp"
                     android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/boboboxBCityHourET"
+                    <AutoCompleteTextView
+                        android:id="@+id/boboboxBHCityACTV"
+                        android:inputType="textPersonName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
@@ -61,6 +62,7 @@
                         android:hint="Bobobox near you...."
                         android:includeFontPadding="false"
                         android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
                         android:textAllCaps="false"
                         android:textSize="20sp"
                         android:gravity="center_vertical"
@@ -98,7 +100,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="25dp"
-                                android:background="@drawable/border_radius_white_booking"
+                                android:background="@drawable/border_radius_color"
                                 android:orientation="horizontal">
 
                                 <RelativeLayout
@@ -171,7 +173,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="25dp"
-                                android:background="@drawable/border_radius_white_booking"
+                                android:background="@drawable/border_radius_color"
                                 android:gravity="center"
                                 android:orientation="horizontal"
                                 android:paddingLeft="10dp"
@@ -275,7 +277,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="25dp"
                             android:gravity="bottom"
-                            android:background="@drawable/border_radius_white_booking">
+                            android:background="@drawable/border_radius_color">
 
                             <ImageView
                                 android:id="@+id/boboboxBHSkyIV"
@@ -309,7 +311,7 @@
                             android:layout_alignParentStart="true"
                             android:layout_marginTop="25dp"
                             android:gravity="bottom"
-                            android:background="@drawable/border_radius_white_booking">
+                            android:background="@drawable/border_radius_color">
 
                             <ImageView
                                 android:id="@+id/boboboxBHEarthIV"

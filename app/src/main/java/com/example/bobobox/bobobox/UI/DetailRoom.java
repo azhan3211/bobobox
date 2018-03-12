@@ -1,4 +1,4 @@
-package com.example.bobobox.bobobox;
+package com.example.bobobox.bobobox.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,17 +14,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import com.example.bobobox.bobobox.Adapter.ViewPagerAdapter;
+import com.example.bobobox.bobobox.Data.BoboboxAPI;
+import com.example.bobobox.bobobox.Data.BoboboxDataInterface;
+import com.example.bobobox.bobobox.Data.SharedPreference;
 import com.example.bobobox.bobobox.Fragments.FragmentAbout;
 import com.example.bobobox.bobobox.Fragments.FragmentMapLocation;
 import com.example.bobobox.bobobox.Fragments.FragmentReview;
+import com.example.bobobox.bobobox.R;
+import com.example.bobobox.bobobox.Service.BoboboxRetrofit;
+
+import java.text.DecimalFormat;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * Created by unknown on 31/12/17.
  */
 
-public class DetailRoom extends AppCompatActivity {
+public class DetailRoom extends AppCompatActivity implements View.OnClickListener {
 
     private FragmentManager fm = getSupportFragmentManager();
     private FragmentTransaction ft = fm.beginTransaction();
@@ -38,33 +53,65 @@ public class DetailRoom extends AppCompatActivity {
     LinearLayout boboboxImageSliderLL;
     private int dotsCount;
     private ImageView[] dots;
+    TextView namaHotel, harga;
+    RatingBar rating;
+
+    private SharedPreference sharedPreference = new SharedPreference();
 
     Button booking;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_room_layout);
 
-        viewPager = (ViewPager) findViewById(R.id.boboboxImageSlideVP);
-        booking = (Button) findViewById(R.id.boboboxDRBookingBtn);
+        initialVariable();
+        imageSliderSetup();
+        initialTab();
+        tabSetup();
+        if(getIntent().getStringExtra("id_hotel") != null)
+            getData();
+        booking.setOnClickListener(this);
+    }
 
-        booking.setOnClickListener(new View.OnClickListener() {
+    private void getData() {
+        String id_hotel = getIntent().getStringExtra("id_hotel");
+//        sharedPreference.saveIdHotel(DetailRoom.this, id_hotel);
+        String position = sharedPreference.getPosition(DetailRoom.this);
+        String[] splitDate = null;
+        String check_in = "";
+        final DecimalFormat money = new DecimalFormat("#,###,###");
+        if(sharedPreference.getDateInValue(DetailRoom.this) != null)
+            splitDate = sharedPreference.getDateInValue(DetailRoom.this).split("=");
+        else
+            splitDate = sharedPreference.getDateHourValue(DetailRoom.this).split("=");
+
+        check_in = splitDate[2]+"-"+(Integer.parseInt(splitDate[1])+1)+"-"+splitDate[0];
+        BoboboxRetrofit builder = new BoboboxRetrofit();
+        Retrofit retrofit = builder.syncBobobox();
+        BoboboxDataInterface boboboxDataInterface = retrofit.create(BoboboxDataInterface.class);
+        Call<List<BoboboxAPI>> call = boboboxDataInterface.getBoboboxDetail(id_hotel, position, check_in);
+        call.enqueue(new Callback<List<BoboboxAPI>>() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DetailRoom.this, BookingConfirmationStep1.class);
-                startActivity(intent);
+            public void onResponse(Call<List<BoboboxAPI>> call, Response<List<BoboboxAPI>> response) {
+                List<BoboboxAPI> result = response.body();
+                namaHotel.setText(result.get(0).getNamaHotel());
+                harga.setText("Rp. "+money.format(result.get(0).getHarga()).replace(",",".")+"/Night");
+                int harga = result.get(0).getHarga().intValue();
+                sharedPreference.savePrice(DetailRoom.this, String.valueOf(harga));
+                rating.setRating(Float.parseFloat(result.get(0).getRating().toString()));
+            }
+
+            @Override
+            public void onFailure(Call<List<BoboboxAPI>> call, Throwable t) {
+
             }
         });
+    }
 
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
-        viewPager.setAdapter(viewPagerAdapter);
-
-        boboboxImageSliderLL = (LinearLayout) findViewById(R.id.boboboxDotImageSliderLL);
-
-        dotsCount = viewPagerAdapter.getCount();
-        dots = new ImageView[dotsCount];
-
+    private void imageSliderSetup() {
         for(int i = 0; i < dotsCount; i++){
             dots[i] = new ImageView(this);
             dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.nonactive_dot));
@@ -97,17 +144,33 @@ public class DetailRoom extends AppCompatActivity {
 
             }
         });
+    }
 
+    private void initialVariable() {
+        viewPager = (ViewPager) findViewById(R.id.boboboxImageSlideVP);
+        booking = (Button) findViewById(R.id.boboboxDRBookingBtn);
         tabLayout = (TabLayout) findViewById(R.id.tabDetail);
-
         boboboxMusic = (ImageView) findViewById(R.id.boboboxMusicFacility);
         boboboxTv = (ImageView) findViewById(R.id.boboboxTvCableFacility);
         boboboxWifi = (ImageView) findViewById(R.id.boboboxWifiFacility);
         boboboxTransportation = (ImageView) findViewById(R.id.boboboxTransportationFacility);
         boboboxHotel = (ImageView) findViewById(R.id.boboboxHotelInfoFacility);
+        boboboxImageSliderLL = (LinearLayout) findViewById(R.id.boboboxDotImageSliderLL);
+        namaHotel = (TextView) findViewById(R.id.boboboxDRNameTV);
+        harga = (TextView) findViewById(R.id.boboboxDRPriceTV);
+        rating = (RatingBar) findViewById(R.id.boboboxDRRatingR);
+//        sharedPreference.saveIdHotel(DetailRoom.this, getIntent().getStringExtra("id_hotel"));
 
-        initialTab();
+        sharedPreference.saveIdHotel(DetailRoom.this, "R101");
 
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
+        viewPager.setAdapter(viewPagerAdapter);
+
+        dotsCount = viewPagerAdapter.getCount();
+        dots = new ImageView[dotsCount];
+    }
+
+    private void tabSetup() {
         fragment = new FragmentAbout();
         ft.add(R.id.boboboxFragmentDetail, fragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -145,7 +208,6 @@ public class DetailRoom extends AppCompatActivity {
 
             }
         });
-
     }
 
     private void initialTab(){
@@ -160,5 +222,18 @@ public class DetailRoom extends AppCompatActivity {
         TabLayout.Tab thirdTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
         thirdTab.setText("Map Location"); // set the Text for the first Tab
         tabLayout.addTab(thirdTab); // add  the tab to the TabLayout
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.boboboxDRBookingBtn:
+                Intent intent = new Intent(DetailRoom.this, BookingConfirmationStep1.class);
+                intent.putExtra("namaHotel", namaHotel.getText().toString());
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
     }
 }

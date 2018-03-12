@@ -6,15 +6,15 @@ package com.example.bobobox.bobobox.Data;
 
 public class BoboboxList {
 
-    private int id;
+    private String id;
     private String nama_hotel;
     private Double rating;
-    private String harga;
+    private Double harga;
     private String alamat;
     private String negara;
     private String position;
 
-    public BoboboxList(int id, String nama_hotel, Double rating, String harga, String alamat, String negara, String position) {
+    public BoboboxList(String id, String nama_hotel, Double rating, Double harga, String alamat, String negara, String position) {
         this.id = id;
         this.nama_hotel = nama_hotel;
         this.rating = rating;
@@ -24,7 +24,7 @@ public class BoboboxList {
         this.position = position;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -36,7 +36,7 @@ public class BoboboxList {
         return rating;
     }
 
-    public String getHarga() {
+    public Double getHarga() {
         return harga;
     }
 

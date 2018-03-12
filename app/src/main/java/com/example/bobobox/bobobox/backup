@@ -64,7 +64,7 @@ public class BookingCalendar extends AppCompatActivity{
         bookingCalendar = (CompactCalendarView) findViewById(R.id.bookingCalendarCV);
         bookingCalendar.setUseThreeLetterAbbreviation(true);
 
-        if(className.equals("com.example.bobobox.bobobox.BookingDate")) {
+        if(className.equals("com.example.bobobox.bobobox.UI.BookingDate")) {
             if(sharedPreference.getDateHourValue(BookingCalendar.this) != null){
                 splitDate = sharedPreference.getDateHourValue(BookingCalendar.this).split("=");
 
@@ -82,7 +82,7 @@ public class BookingCalendar extends AppCompatActivity{
             }
         }
 
-        if(className.equals("com.example.bobobox.bobobox.BookingHour")) {
+        if(className.equals("com.example.bobobox.bobobox.UI.BookingHour")) {
         }
 
         bookingCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
@@ -97,11 +97,11 @@ public class BookingCalendar extends AppCompatActivity{
                     splitDate = mDate.split(" ");
                     dateSelected = String.valueOf(splitDate[2])+"="+String.valueOf(splitDate[1])+"="+String.valueOf(splitDate[5]);
                     System.out.println(dateSelected);
-                    if(className.equals("com.example.bobobox.bobobox.BookingHour")) {
+                    if(className.equals("com.example.bobobox.bobobox.UI.BookingHour")) {
                         sharedPreference.saveDateHour(BookingCalendar.this, dateSelected);
                     }
 
-                    if(className.equals("com.example.bobobox.bobobox.BookingDate")){
+                    if(className.equals("com.example.bobobox.bobobox.UI.BookingDate")){
 
                         if(incomingIntent.hasExtra("dateIn")) {
                             sharedPreference.saveDateIn(BookingCalendar.this, dateSelected);
@@ -138,11 +138,11 @@ public class BookingCalendar extends AppCompatActivity{
 //                    e.printStackTrace();
 //                }
 //
-//                if(className.equals("com.example.bobobox.bobobox.BookingDate")) {
+//                if(className.equals("com.example.bobobox.bobobox.UI.BookingDate")) {
 //                    intent = new Intent(BookingCalendar.this, classType);
 //                }
 //
-//                if(className.equals("com.example.bobobox.bobobox.BookingHour")) {
+//                if(className.equals("com.example.bobobox.bobobox.UI.BookingHour")) {
 //                    intent = new Intent(BookingCalendar.this, classType);
 //                }
 //
@@ -179,11 +179,11 @@ public class BookingCalendar extends AppCompatActivity{
 //                    e.printStackTrace();
 //                }
 //
-//                if(className.equals("com.example.bobobox.bobobox.BookingHour")) {
+//                if(className.equals("com.example.bobobox.bobobox.UI.BookingHour")) {
 //                    sharedPreference.saveDateHour(BookingCalendar.this, dateSelected);
 //                }
 //
-//                if(className.equals("com.example.bobobox.bobobox.BookingDate")){
+//                if(className.equals("com.example.bobobox.bobobox.UI.BookingDate")){
 //
 //                    if(incomingIntent.hasExtra("dateIn")) {
 //                        sharedPreference.saveDateIn(BookingCalendar.this, dateSelected);
@@ -199,11 +199,11 @@ public class BookingCalendar extends AppCompatActivity{
 //                String date = String.valueOf(dayOfMonth)+"="+String.valueOf(month)+"="+String.valueOf(year);
 //
 //
-//                if(className.equals("com.example.bobobox.bobobox.BookingHour")) {
+//                if(className.equals("com.example.bobobox.bobobox.UI.BookingHour")) {
 //                    sharedPreference.saveDateHour(BookingCalendar.this, date);
 //                }
 //
-//                if(className.equals("com.example.bobobox.bobobox.BookingDate")){
+//                if(className.equals("com.example.bobobox.bobobox.UI.BookingDate")){
 //
 //                    if(incomingIntent.hasExtra("dateIn")) {
 //                        sharedPreference.saveDateIn(BookingCalendar.this, date);
@@ -647,3 +647,248 @@ Calendar Library
                                             android:layout_height="wrap_content"
                                             android:id="@+id/boboboxMBHistoryRV"></android.support.v7.widget.RecyclerView>
                                     </LinearLayout>
+
+
+
+                            <RelativeLayout
+                                android:layout_width="150dp"
+                                android:layout_height="90dp"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/border_radius">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:id="@+id/boboboxImagePromoIV1"
+                                    android:backgroundTint="#000"
+                                    android:background="@drawable/border_radius"/>
+                                <TextView
+                                    android:layout_width="60dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="2dp"
+                                    android:text="10% OFF"
+                                    android:gravity="center"
+                                    android:id="@+id/boboboxSpecialPromoPercentTV1"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorTextPrimary"
+                                    android:textSize="8sp"
+                                    android:background="@drawable/border_radius_special_promo"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_alignParentBottom="true">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="2dp"
+                                        android:paddingLeft="5dp"
+                                        android:orientation="vertical">
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Bobobox Dago"
+                                            android:textSize="12sp"
+                                            android:textColor="@color/colorTextPrimary"
+                                            android:id="@+id/boboboxSpecialPromoNameTV1"/>
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Bandung"
+                                            android:textSize="12dp"
+                                            android:textColor="@color/colorTextPrimary"
+                                            android:id="@+id/boboboxSpecialPromoCityTV1"/>
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textSize="10sp"
+                                                android:id="@+id/boboboxOldPricePromoTV1"
+                                                android:textColor="@color/colorTextPrimary"
+                                                android:text="Rp. 200.000"
+                                                android:layout_marginRight="5dp"/>
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textSize="10sp"
+                                                android:id="@+id/boboboxNewPricePromoTV1"
+                                                android:textColor="@color/colorTextPrimary"
+                                                android:text="Rp. 180.000"/>
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="150dp"
+                                android:layout_height="90dp"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/border_radius">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:id="@+id/boboboxImagePromoIV2"
+                                    android:backgroundTint="#000"
+                                    android:background="@drawable/border_radius"/>
+                                <TextView
+                                    android:layout_width="60dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="2dp"
+                                    android:text="10% OFF"
+                                    android:gravity="center"
+                                    android:id="@+id/boboboxSpecialPromoPercentTV2"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorTextPrimary"
+                                    android:textSize="8sp"
+                                    android:background="@drawable/border_radius_special_promo"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_alignParentBottom="true">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="2dp"
+                                        android:paddingLeft="5dp"
+                                        android:orientation="vertical">
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Bobobox Surapati"
+                                            android:textSize="12sp"
+                                            android:textColor="@color/colorTextPrimary"
+                                            android:id="@+id/boboboxSpecialPromoNameTV2"/>
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Jakarta"
+                                            android:textSize="12dp"
+                                            android:textColor="@color/colorTextPrimary"
+                                            android:id="@+id/boboboxSpecialPromoCityTV2"/>
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textSize="10sp"
+                                                android:id="@+id/boboboxOldPricePromoTV2"
+                                                android:textColor="@color/colorTextPrimary"
+                                                android:text="Rp. 200.000"
+                                                android:layout_marginRight="5dp"/>
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textSize="10sp"
+                                                android:id="@+id/boboboxNewPricePromoTV2"
+                                                android:textColor="@color/colorTextPrimary"
+                                                android:text="Rp. 160.000"/>
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="150dp"
+                                android:layout_height="90dp"
+                                android:background="@drawable/border_radius">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:id="@+id/boboboxImagePromoIV3"
+                                    android:backgroundTint="#000"
+                                    android:background="@drawable/border_radius"/>
+                                <TextView
+                                    android:layout_width="60dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="2dp"
+                                    android:text="10% OFF"
+                                    android:gravity="center"
+                                    android:id="@+id/boboboxSpecialPromoPercentTV3"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorTextPrimary"
+                                    android:textSize="8sp"
+                                    android:background="@drawable/border_radius_special_promo"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_alignParentBottom="true">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="2dp"
+                                        android:paddingLeft="5dp"
+                                        android:orientation="vertical">
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Bobobox Kuta"
+                                            android:textSize="12sp"
+                                            android:textColor="@color/colorTextPrimary"
+                                            android:id="@+id/boboboxSpecialPromoNameTV3"/>
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Bali"
+                                            android:textSize="12dp"
+                                            android:textColor="@color/colorTextPrimary"
+                                            android:id="@+id/boboboxSpecialPromoCityTV3"/>
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textSize="10sp"
+                                                android:id="@+id/boboboxOldPricePromoTV3"
+                                                android:textColor="@color/colorTextPrimary"
+                                                android:text="Rp. 200.000"
+                                                android:layout_marginRight="5dp"/>
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textSize="10sp"
+                                                android:id="@+id/boboboxNewPricePromoTV3"
+                                                android:textColor="@color/colorTextPrimary"
+                                                android:text="Rp. 160.000"/>
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </RelativeLayout>
+
+
+
+                    <HorizontalScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none">
+
+
+                    //        imagePromo1 = (ImageView) view.findViewById(R.id.boboboxImagePromoIV1);
+                    //        imagePromo2 = (ImageView) view.findViewById(R.id.boboboxImagePromoIV2);
+                    //        imagePromo3 = (ImageView) view.findViewById(R.id.boboboxImagePromoIV3);
+                    //
+                    //        oldPrice1 = (TextView) view.findViewById(R.id.boboboxOldPricePromoTV1);
+                    //        oldPrice2 = (TextView) view.findViewById(R.id.boboboxOldPricePromoTV2);
+                    //        oldPrice3 = (TextView) view.findViewById(R.id.boboboxOldPricePromoTV3);
+                    //
+                    //        oldPrice1.setPaintFlags(oldPrice1.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    //        oldPrice2.setPaintFlags(oldPrice2.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    //        oldPrice3.setPaintFlags(oldPrice3.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    //
+                    //
+                    //        imagePromo1.setImageBitmap(roundedImage(images[0]));
+                    //        imagePromo2.setImageBitmap(roundedImage(images[1]));
+                    //        imagePromo3.setImageBitmap(roundedImage(images[2]));

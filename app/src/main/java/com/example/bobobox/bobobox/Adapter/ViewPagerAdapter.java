@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.bobobox.bobobox.R;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by Unknown on 1/10/2018.

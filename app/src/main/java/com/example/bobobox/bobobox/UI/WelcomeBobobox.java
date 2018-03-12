@@ -1,12 +1,13 @@
-package com.example.bobobox.bobobox;
+package com.example.bobobox.bobobox.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.bobobox.bobobox.R;
 
 /**
  * Created by clown on 12/21/2017.
@@ -30,8 +31,12 @@ public class WelcomeBobobox extends AppCompatActivity{
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(WelcomeBobobox.this, MainActivity.class);
+                intent = new Intent(WelcomeBobobox.this, SignIn.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                finish();
             }
         });
     }

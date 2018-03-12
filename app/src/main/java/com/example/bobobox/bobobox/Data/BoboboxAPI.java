@@ -6,15 +6,15 @@ package com.example.bobobox.bobobox.Data;
 
 public class BoboboxAPI {
 
-    private int id;
+    private String id;
     private String nama_hotel;
     private Double rating;
-    private String harga;
+    private Double harga;
     private String alamat;
     private String negara;
     private String position;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -22,7 +22,7 @@ public class BoboboxAPI {
         return nama_hotel;
     }
 
-    public String getHarga() {
+    public Double getHarga() {
         return harga;
     }
 

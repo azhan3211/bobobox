@@ -1,5 +1,7 @@
 package com.example.bobobox.bobobox.Service;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -10,9 +12,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class BoboboxRetrofit {
 
     public Retrofit syncBobobox() {
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.addInterceptor(logging);
+
         Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.106/bobobox/public/api/v1/")
-                .addConverterFactory(GsonConverterFactory.create());
+                .baseUrl("https://bobobox.co.id/api/api/v1/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient.build());
 
         Retrofit retrofit = builder.build();
         return retrofit;

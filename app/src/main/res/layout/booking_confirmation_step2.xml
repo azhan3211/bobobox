@@ -295,7 +295,8 @@
                                     android:layout_height="14dp"
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
-                                    app:srcCompat="@drawable/ic_bobobox_type2"
+                                    android:id="@+id/boboboxBC2RoomTypeIV"
+                                    app:srcCompat="@drawable/ic_room_type1"
                                     android:scaleType="fitXY"/>
                             </LinearLayout>
                             <LinearLayout

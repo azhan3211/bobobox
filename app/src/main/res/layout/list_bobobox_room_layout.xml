@@ -37,7 +37,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Bobobox Sudirman"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
                     android:id="@+id/boboboxNameRoom"
                     android:textColor="@color/colorTextPrimaryBlack"/>
 
@@ -47,6 +48,7 @@
                     android:layout_height="wrap_content"
                     android:isIndicator="false"
                     android:numStars="5"
+                    android:theme="@style/RatingBar"
                     android:id="@+id/boboboxRatingRoom"
                     android:rating="5" />
                 <LinearLayout
@@ -69,6 +71,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
+                        android:textStyle="bold"
                         android:text="Rp. 175.000/Night"
                         android:id="@+id/boboboxPriceRoom"
                         android:textColor="@color/colorTextPrimaryBlack"/>
@@ -109,10 +112,10 @@
                 android:orientation="vertical"
                 android:gravity="bottom">
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:scaleType="fitXY"
-                    app:srcCompat="@drawable/ic_bobobox_type"
+                    app:srcCompat="@drawable/ic_room_type1"
                     android:id="@+id/boboboxTypeRoom"/>
             </LinearLayout>
         </LinearLayout>

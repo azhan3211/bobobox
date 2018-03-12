@@ -9,22 +9,27 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.bobobox.bobobox.BookingDate;
-import com.example.bobobox.bobobox.BookingHour;
+import com.example.bobobox.bobobox.Adapter.PromoAdapter;
+import com.example.bobobox.bobobox.Data.PromoApi;
+import com.example.bobobox.bobobox.UI.BookingDate;
+import com.example.bobobox.bobobox.UI.BookingHour;
 import com.example.bobobox.bobobox.R;
 
-import static com.example.bobobox.bobobox.R.id.textView;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Unknown on 12/24/2017.
@@ -35,6 +40,10 @@ public class FragmentHome extends Fragment {
     private RelativeLayout boboboxLite;
     private RelativeLayout boboboxStay;
     private Intent intent;
+    private RecyclerView promoRV;
+    private RecyclerView.Adapter promoAdapter;
+    private List<PromoApi> promos;
+    private PromoApi promo;
 
     ImageView imagePromo1, imagePromo2, imagePromo3;
     TextView oldPrice1, oldPrice2, oldPrice3;
@@ -77,34 +86,21 @@ public class FragmentHome extends Fragment {
     }
 
     private void initialVariable(View view) {
-        imagePromo1 = (ImageView) view.findViewById(R.id.boboboxImagePromoIV1);
-        imagePromo2 = (ImageView) view.findViewById(R.id.boboboxImagePromoIV2);
-        imagePromo3 = (ImageView) view.findViewById(R.id.boboboxImagePromoIV3);
-
-        oldPrice1 = (TextView) view.findViewById(R.id.boboboxOldPricePromoTV1);
-        oldPrice2 = (TextView) view.findViewById(R.id.boboboxOldPricePromoTV2);
-        oldPrice3 = (TextView) view.findViewById(R.id.boboboxOldPricePromoTV3);
-
-        oldPrice1.setPaintFlags(oldPrice1.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        oldPrice2.setPaintFlags(oldPrice2.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        oldPrice3.setPaintFlags(oldPrice3.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-
-
-        imagePromo1.setImageBitmap(roundedImage(images[0]));
-        imagePromo2.setImageBitmap(roundedImage(images[1]));
-        imagePromo3.setImageBitmap(roundedImage(images[2]));
-
-
-    }
-
-    private Bitmap roundedImage(int imagesR){
-        Bitmap mbitmap = ((BitmapDrawable) getResources().getDrawable(imagesR)).getBitmap();
-        Bitmap imageRounded = Bitmap.createBitmap(mbitmap.getWidth(), mbitmap.getHeight(), mbitmap.getConfig());
-        Canvas canvas = new Canvas(imageRounded);
-        Paint mpaint = new Paint();
-        mpaint.setAntiAlias(true);
-        mpaint.setShader(new BitmapShader(mbitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
-        canvas.drawRoundRect((new RectF(0, 0, mbitmap.getWidth(), mbitmap.getHeight())), 20, 20, mpaint);// Round Image Corner 100 100 100 100
-        return imageRounded;
+        promoRV = (RecyclerView) view.findViewById(R.id.boboboxFHPromoRV);
+        promoRV.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayout.HORIZONTAL, false));
+        promos = new ArrayList<>();
+        for(int i = 0; i < 3; i++){
+            promo = new PromoApi(
+                    "Bobobox #"+(i+1),
+                    "City "+(i+1),
+                    "20%",
+                    null,
+                    "200000",
+                    "160000"
+            );
+            promos.add(promo);
+        }
+        promoAdapter = new PromoAdapter(getActivity().getApplicationContext(), promos);
+        promoRV.setAdapter(promoAdapter);
     }
 }

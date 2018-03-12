@@ -1,22 +1,22 @@
-package com.example.bobobox.bobobox;
+package com.example.bobobox.bobobox.UI;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.bobobox.bobobox.Data.Booking;
 import com.example.bobobox.bobobox.Data.SharedPreference;
+import com.example.bobobox.bobobox.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -28,19 +28,12 @@ import java.util.Date;
 
 public class BookingDate extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText room;
-    private EditText person;
-
-    private EditText city;
+    private EditText room, person;
 
     private int numberRoom = 0;
     private int numberPerson = 0;
 
-    private ImageView btnPlusRoom;
-    private ImageView btnPlusPerson;
-
-    private ImageView btnMinusRoom;
-    private ImageView btnMinusPerson;
+    private ImageView btnPlusRoom, btnPlusPerson, btnMinusRoom, btnMinusPerson;
 
     private ImageView skyPosition, earthPosition;
 
@@ -55,18 +48,13 @@ public class BookingDate extends AppCompatActivity implements View.OnClickListen
 
     private SimpleDateFormat simpledateformat = new SimpleDateFormat("EEEE");
 
-    private RelativeLayout dateInSelectRL;
-    private RelativeLayout dateOutSelectRL;
+    private RelativeLayout dateInSelectRL, dateOutSelectRL;
 
-    private TextView dateInTV;
-    private TextView dateInMonthYearTV;
-    private TextView dateInDayTV;
-    private TextView dateOutTV;
-    private TextView dateOutMonthYearTV;
-    private TextView dateOutDayTV;
+    private TextView dateInTV, dateInMonthYearTV, dateInDayTV, dateOutTV, dateOutMonthYearTV, dateOutDayTV;
+    private AutoCompleteTextView citiesACTV;
 
     private static String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-
+    private static String[] cities = {"Bandung", "Jakarta"};
     private Intent intent;
     private Button btnSearch;
 
@@ -78,6 +66,7 @@ public class BookingDate extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.booking_date_layout);
+        sharedPreference.saveBookingType(BookingDate.this, "1");
 
         initialVariable();
         btnPlusMinus();
@@ -214,7 +203,7 @@ public class BookingDate extends AppCompatActivity implements View.OnClickListen
         room = (EditText) findViewById(R.id.dateNumberRoom);
         person = (EditText) findViewById(R.id.dateNumberPerson);
 
-        city = (EditText) findViewById(R.id.boboboxBCityDateET);
+//        city = (EditText) findViewById(R.id.boboboxBCityDateET);
 
         btnPlusRoom = (ImageView) findViewById(R.id.dateBtnPlusRoom);
         btnPlusPerson = (ImageView) findViewById(R.id.dateBtnPlusPerson);
@@ -239,6 +228,17 @@ public class BookingDate extends AppCompatActivity implements View.OnClickListen
         dateOutDayTV.setText(dayOfWeek);
 
         btnSearch = (Button) findViewById(R.id.btnSearchDate);
+
+        citiesACTV = (AutoCompleteTextView) findViewById(R.id.boboboxBDCityACTV);
+        citiesACTV.setAdapter(new ArrayAdapter(BookingDate.this, android.R.layout.simple_list_item_1, cities));
+        citiesACTV.setThreshold(1);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(getIntent().getStringExtra("city") != null)
+            citiesACTV.setText(getIntent().getStringExtra("city"));
     }
 
     @Override
@@ -247,19 +247,23 @@ public class BookingDate extends AppCompatActivity implements View.OnClickListen
         switch (view.getId()){
             case R.id.dateInSelect:
                 intent = new Intent(BookingDate.this, BookingCalendar.class);
-                intent.putExtra("class","com.example.bobobox.bobobox.BookingDate");
+                intent.putExtra("class","com.example.bobobox.bobobox.UI.BookingDate");
                 intent.putExtra("dateIn", "Y");
+                if(!citiesACTV.getText().equals(""))
+                    intent.putExtra("city", citiesACTV.getText().toString());
                 startActivity(intent);
                 break;
             case R.id.dateOutSelect:
                 intent = new Intent(BookingDate.this, BookingCalendar.class);
-                intent.putExtra("class","com.example.bobobox.bobobox.BookingDate");
+                intent.putExtra("class","com.example.bobobox.bobobox.UI.BookingDate");
                 intent.putExtra("dateOut", "Y");
+                if(!citiesACTV.getText().equals(""))
+                    intent.putExtra("city", citiesACTV.getText().toString());
                 startActivity(intent);
                 break;
             case R.id.btnSearchDate:
                 intent = new Intent(BookingDate.this, SearchResult.class);
-                intent.putExtra("class","com.example.bobobox.bobobox.BookingDate");
+                intent.putExtra("class","com.example.bobobox.bobobox.UI.BookingDate");
                 intent.putExtra("dateIn", dateInTV.getText().toString());
                 intent.putExtra("dateOut", dateOutTV.getText().toString());
                 intent.putExtra("monthIn", String.valueOf(mMonth));
@@ -268,7 +272,7 @@ public class BookingDate extends AppCompatActivity implements View.OnClickListen
                 intent.putExtra("yearOut", String.valueOf(mYear2));
                 intent.putExtra("dateInDay",dateInDayTV.getText().toString());
                 intent.putExtra("dateOutDay", dateOutDayTV.getText().toString());
-                intent.putExtra("city", city.getText().toString());
+                intent.putExtra("city", citiesACTV.getText().toString());
 
                 if(person.getText().toString().equals(""))
                     intent.putExtra("numberPerson", "1");
@@ -281,9 +285,9 @@ public class BookingDate extends AppCompatActivity implements View.OnClickListen
                     intent.putExtra("numberRoom", room.getText().toString());
 
                 if(roomPosition.equals("sky"))
-                    intent.putExtra("roomPosition", "sky");
+                    intent.putExtra("roomPosition", "Sky");
                 else
-                    intent.putExtra("roomPosition", "earth");
+                    intent.putExtra("roomPosition", "Earth");
                 startActivity(intent);
                 break;
             case R.id.boboboxBDEarthIV:

@@ -17,14 +17,16 @@
         android:textSize="15dp"
         android:id="@+id/skipTV"/>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_marginTop="30dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Welcome"
+            android:textStyle="bold"
             android:gravity="center"
             android:layout_marginTop="20dp"
             android:textColor="@color/colorTextPrimary"
@@ -37,34 +39,8 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_weight="0.24"
-            app:srcCompat="@drawable/main_logo" />
-
-        <TextView
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="0.24"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:text="bobobox"
-            android:textAlignment="center"
-            android:textColor="@color/colorTextPrimary"
-            android:textSize="50sp" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="0dp"
-            android:text="Rest Anytime Anywhere"
-            android:textAlignment="center"
-            android:textColor="@color/colorTextPrimary" />
-    </RelativeLayout>
+            app:srcCompat="@drawable/ic_logo" />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

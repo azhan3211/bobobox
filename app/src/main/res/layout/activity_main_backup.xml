@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#cccccc"
-    tools:context="com.example.bobobox.bobobox.MainActivity">
+    tools:context="com.example.bobobox.bobobox.UI.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

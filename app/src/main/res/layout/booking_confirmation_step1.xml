@@ -162,7 +162,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/boboboxBCNameRoomTV"
+                                android:id="@+id/boboboxBCNameTV"
                                 android:layout_toRightOf="@+id/boboboxBCPlaceIV"
                                 android:text="Bobobox Dago"
                                 android:layout_marginLeft="5dp"
@@ -288,15 +288,15 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Bobobox Earth"
-                                    android:id="@+id/boboboxBCRoomTypeTV"
+                                    android:id="@+id/boboboxBCPositionTV"
                                     android:textSize="14sp"/>
                                 <ImageView
                                     android:layout_width="20dp"
                                     android:layout_height="14dp"
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
-                                    android:id="@+id/boboboxBCRoomTypeIV"
-                                    app:srcCompat="@drawable/ic_bobobox_type2"
+                                    android:id="@+id/boboboxBCPositionIV"
+                                    app:srcCompat="@drawable/ic_room_type1"
                                     android:scaleType="fitXY"/>
                             </LinearLayout>
                             <LinearLayout
@@ -482,6 +482,7 @@
                     <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/boboboxBCBreakfastRG"
                         android:orientation="horizontal">
                         <RadioButton
                             android:layout_width="100dp"
@@ -496,7 +497,7 @@
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/boboboxBCStayBreakfastNoRB"
+                            android:id="@+id/boboboxBCBreakfastNoRB"
                             android:textSize="14sp"
                             android:fontFamily="@font/proxima_nova"
                             app:buttonTint="@color/colorTheme"
@@ -521,8 +522,9 @@
                     android:background="@drawable/border_radius_btn"
                     android:text="Next"
                     android:textSize="20sp"
-                    android:textAllCaps="false"
                     android:fontFamily="@font/proxima_nova"
+                    android:textAllCaps="false"
+                    android:gravity="center"
                     android:textColor="@color/colorTextPrimary" />
             </LinearLayout>
         </LinearLayout>

@@ -1,19 +1,15 @@
-package com.example.bobobox.bobobox;
+package com.example.bobobox.bobobox.UI;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.Toast;
 
 import com.example.bobobox.bobobox.Data.SharedPreference;
+import com.example.bobobox.bobobox.R;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
@@ -92,13 +88,15 @@ public class BookingCalendar extends AppCompatActivity{
                     e.printStackTrace();
                 }
 
-                if(className.equals("com.example.bobobox.bobobox.BookingDate"))
+                if(className.equals("com.example.bobobox.bobobox.UI.BookingDate"))
                     intent = new Intent(BookingCalendar.this, classType);
 
-                if(className.equals("com.example.bobobox.bobobox.BookingHour"))
+                if(className.equals("com.example.bobobox.bobobox.UI.BookingHour"))
                     intent = new Intent(BookingCalendar.this, classType);
 
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                if(getIntent().getStringExtra("city") != null)
+                    intent.putExtra("city", getIntent().getStringExtra("city"));
                 startActivity(intent);
                 finish();
             }
@@ -120,10 +118,10 @@ public class BookingCalendar extends AppCompatActivity{
                 year = Integer.parseInt(splitDate[0]);
                 dateSelected = String.valueOf(dayOfMonth)+"="+String.valueOf(month)+"="+String.valueOf(year);
 
-                if(className.equals("com.example.bobobox.bobobox.BookingHour"))
+                if(className.equals("com.example.bobobox.bobobox.UI.BookingHour"))
                     sharedPreference.saveDateHour(BookingCalendar.this, dateSelected);
 
-                if(className.equals("com.example.bobobox.bobobox.BookingDate")){
+                if(className.equals("com.example.bobobox.bobobox.UI.BookingDate")){
                     if(incomingIntent.hasExtra("dateIn"))
                         sharedPreference.saveDateIn(BookingCalendar.this, dateSelected);
                     if(incomingIntent.hasExtra("dateOut"))

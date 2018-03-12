@@ -60,11 +60,13 @@
                         android:text="Wen, 20"
                         android:textColor="@color/colorTextPrimary"
                         android:textSize="20dp"
+                        android:textStyle="bold"
                         android:id="@+id/boboboxDateInSearch"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="sep 2017"
+                        android:textStyle="bold"
                         android:textSize="18dp"
                         android:textColor="@color/colorTextPrimary"
                         android:id="@+id/boboboxMonthYearInSearch"/>
@@ -74,12 +76,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorTextPrimary"
                         android:id="@+id/boboboxHourInSearch"
+                        android:textStyle="bold"
                         android:text="13.00"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorTextPrimary"
                         android:text="WIB"
+                        android:textStyle="bold"
                         android:id="@+id/boboboxAmPmInSearch"/>
                 </LinearLayout>
                 <LinearLayout
@@ -94,6 +98,7 @@
                         android:layout_height="wrap_content"
                         android:text="BDG, IND"
                         android:textSize="20dp"
+                        android:textStyle="bold"
                         android:layout_marginBottom="10dp"
                         android:id="@+id/boboboxAddressSearch"
                         android:textColor="@color/colorTextPrimary"/>
@@ -104,6 +109,7 @@
                         android:text="1 Room"
                         android:layout_marginBottom="10dp"
                         android:textSize="20dp"
+                        android:textStyle="bold"
                         android:id="@+id/boboboxNumberRoomSearch"
                         android:textColor="@color/colorTextPrimary"/>
 
@@ -112,6 +118,7 @@
                         android:layout_height="wrap_content"
                         android:text="2 Guest"
                         android:textSize="20dp"
+                        android:textStyle="bold"
                         android:id="@+id/boboboxNumberPersonSearch"
                         android:textColor="@color/colorTextPrimary"/>
                 </LinearLayout>
@@ -126,6 +133,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Wen, 20"
+                        android:textStyle="bold"
                         android:textColor="@color/colorTextPrimary"
                         android:textSize="20dp"
                         android:id="@+id/boboboxDateOutSearch"/>
@@ -134,6 +142,7 @@
                         android:layout_height="wrap_content"
                         android:text="sep 2017"
                         android:textSize="18dp"
+                        android:textStyle="bold"
                         android:textColor="@color/colorTextPrimary"
                         android:id="@+id/boboboxMonthYearOutSearch"/>
                     <TextView
@@ -142,12 +151,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorTextPrimary"
                         android:id="@+id/boboboxHourOutSearch"
+                        android:textStyle="bold"
                         android:text="13.00"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorTextPrimary"
                         android:text="WIB"
+                        android:textStyle="bold"
                         android:id="@+id/boboboxAmPmOutSearch"/>
                 </LinearLayout>
             </LinearLayout>

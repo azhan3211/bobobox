@@ -89,8 +89,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Bobobox Dago"
-                                android:id="@+id/boboboxNameRoomReview"
+                                android:id="@+id/boboboxDRNameTV"
                                 android:textSize="16sp"
+                                android:textStyle="bold"
                                 android:textColor="@color/colorTextPrimaryBlack"/>
                             <RatingBar
                                 android:layout_width="wrap_content"
@@ -98,7 +99,8 @@
                                 android:layout_height="wrap_content"
                                 android:isIndicator="false"
                                 android:numStars="5"
-                                android:id="@+id/boboboxRatingRoomReview"
+                                android:theme="@style/RatingBar"
+                                android:id="@+id/boboboxDRRatingR"
                                 android:rating="5" />
                         </LinearLayout>
                         <LinearLayout
@@ -106,23 +108,24 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="right">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:background="@color/colorTheme"
-                                android:text="IDR"
-                                android:layout_marginRight="5dp"
-                                android:padding="3dp"
-                                android:textSize="8sp"
-                                android:layout_gravity="center"
-                                android:id="@+id/boboboxCurrencyCodeReview"
-                                android:textColor="@color/colorTextPrimary"/>
+                            <!--<TextView-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:background="@color/colorTheme"-->
+                                <!--android:text="IDR"-->
+                                <!--android:layout_marginRight="5dp"-->
+                                <!--android:padding="3dp"-->
+                                <!--android:textSize="8sp"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:id="@+id/boboboxCurrencyCodeReview"-->
+                                <!--android:textColor="@color/colorTextPrimary"/>-->
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Rp. 175.000/Night"
                                 android:textSize="16sp"
-                                android:id="@+id/boboboxPriceRoomReview"
+                                android:textStyle="bold"
+                                android:id="@+id/boboboxDRPriceTV"
                                 android:textColor="@color/colorTextPrimaryBlack"/>
                         </LinearLayout>
                     </LinearLayout>
@@ -148,7 +151,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     android:text="Facility Bobobox"
                     android:textColor="@color/colorTextPrimaryBlack"/>

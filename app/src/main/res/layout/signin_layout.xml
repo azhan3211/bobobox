@@ -7,6 +7,7 @@
     android:background="@color/colorTheme">
 
     <RelativeLayout
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -17,32 +18,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_weight="0.24"
-            app:srcCompat="@drawable/main_logo" />
-
-        <TextView
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="0.24"
-            android:ems="10"
-            android:text="bobobox"
-            android:textAlignment="center"
-            android:textColor="@color/colorTextPrimary"
-            android:textSize="50sp" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="0dp"
-            android:text="Rest Anytime Anywhere"
-            android:textAlignment="center"
-            android:textColor="@color/colorTextPrimary" />
+            app:srcCompat="@drawable/ic_logo" />
     </RelativeLayout>
 
     <LinearLayout
@@ -53,18 +29,21 @@
         android:orientation="vertical"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
-        android:paddingTop="80dp">
+        android:paddingTop="20dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:text="Username"
+            android:text="Username or email"
+            android:textStyle="bold"
             android:textColor="@color/colorTextPrimary" />
 
         <EditText
             android:id="@+id/usernameTV"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/proxima_nova"
             android:inputType="textPersonName"
@@ -75,6 +54,7 @@
             android:layout_height="20dp"
             android:fontFamily="@font/proxima_nova"
             android:text="Password"
+            android:textStyle="bold"
             android:textColor="@color/colorTextPrimary" />
 
         <EditText
@@ -82,6 +62,9 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:inputType="textPassword"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/proxima_nova"
             android:textColor="@color/colorTextPrimary" />
 
         <TextView
@@ -89,6 +72,7 @@
             android:layout_height="20dp"
             android:layout_marginTop="10dp"
             android:text="Forget Password?"
+            android:textStyle="bold"
             android:textColor="@color/colorTextPrimary"
             android:textSize="10dp" />
 

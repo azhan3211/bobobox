@@ -1,5 +1,6 @@
-package com.example.bobobox.bobobox;
+package com.example.bobobox.bobobox.UI;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,9 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.bobobox.bobobox.Data.LoginSessoin;
+import com.example.bobobox.bobobox.R;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -19,10 +23,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 
 /**
  * Created by clown on 12/21/2017.
@@ -41,10 +42,13 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
     Button googleLogin;
     CallbackManager callbackManager;
 
+    LoginSessoin loginSessoin = new LoginSessoin();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(this.getApplicationContext());
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
         setContentView(R.layout.main_layout);
 
         initialVariable();
@@ -57,6 +61,13 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
         btnToSignIn.setOnClickListener(this);
 
         btnToSignUp.setOnClickListener(this);
+
+        if(loginSessoin.getUsernameSession(Main.this) != null){
+            intent = new Intent(Main.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK );
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void facebookSetup() {
@@ -90,6 +101,7 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
         fbLogin = (Button) findViewById(R.id.btnSignInFacebookLink);
 
         googleLogin = (Button) findViewById(R.id.btnSignInGmail);
+
     }
 
     @Override

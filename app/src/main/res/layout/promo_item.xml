@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="90dp"
+    android:background="@drawable/promo_radius"
+    android:padding="5dp">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="90dp"
+        android:scaleType="fitXY"
+        android:id="@+id/boboboxImagePromoIV"
+        android:backgroundTint="#000"
+        android:background="@drawable/promo_radius"/>
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"
+        android:text="10% OFF"
+        android:gravity="center"
+        android:id="@+id/boboboxSpecialPromoPercentTV"
+        android:textAlignment="center"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="8sp"
+        android:background="@drawable/border_radius_special_promo"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:paddingLeft="5dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bobobox Dago"
+                android:textSize="12sp"
+                android:textColor="@color/colorTextPrimary"
+                android:id="@+id/boboboxSpecialPromoNameTV"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bandung"
+                android:textSize="12dp"
+                android:textColor="@color/colorTextPrimary"
+                android:id="@+id/boboboxSpecialPromoCityTV"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:id="@+id/boboboxOldPricePromoTV"
+                    android:textColor="@color/colorTextPrimary"
+                    android:text="Rp. 200.000"
+                    android:layout_marginRight="5dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:id="@+id/boboboxNewPricePromoTV"
+                    android:textColor="@color/colorTextPrimary"
+                    android:text="Rp. 180.000"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

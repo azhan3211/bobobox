@@ -1,4 +1,4 @@
-package com.example.bobobox.bobobox;
+package com.example.bobobox.bobobox.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,6 +16,7 @@ import com.example.bobobox.bobobox.Data.BoboboxDataInterface;
 import com.example.bobobox.bobobox.Data.BoboboxAPI;
 import com.example.bobobox.bobobox.Data.BoboboxList;
 import com.example.bobobox.bobobox.Data.SharedPreference;
+import com.example.bobobox.bobobox.R;
 import com.example.bobobox.bobobox.Service.BoboboxRetrofit;
 
 import java.util.ArrayList;
@@ -54,7 +54,7 @@ public class SearchResult extends AppCompatActivity {
     private Intent incomingIntent;
     private String className;
 
-    private String city, roomPosition;
+    private String city, roomPosition, dateCheckIn;
 
     RelativeLayout nextToBC;
 
@@ -66,9 +66,7 @@ public class SearchResult extends AppCompatActivity {
         setContentView(R.layout.search_result_layout);
 
         initialVariable();
-
         classChecker();
-
         getData();
     }
 
@@ -76,37 +74,30 @@ public class SearchResult extends AppCompatActivity {
         BoboboxRetrofit builder = new BoboboxRetrofit();
         Retrofit retrofit = builder.syncBobobox();
         BoboboxDataInterface boboboxDataInterface = retrofit.create(BoboboxDataInterface.class);
-        Call<List<BoboboxAPI>> call = boboboxDataInterface.getBoboboxData(roomPosition, city);
+        String[] splitDate = null;
+
+        if(sharedPreference.getDateInValue(SearchResult.this) != null)
+            splitDate = sharedPreference.getDateInValue(SearchResult.this).split("=");
+        else
+            splitDate = sharedPreference.getDateHourValue(SearchResult.this).split("=");
+
+        dateCheckIn = splitDate[2]+"-"+(Integer.parseInt(splitDate[1])+1)+"-"+splitDate[0];
+        Call<List<BoboboxAPI>> call = boboboxDataInterface.getBoboboxSearchRoom(roomPosition, city, dateCheckIn);
         call.enqueue(new Callback<List<BoboboxAPI>>() {
             @Override
             public void onResponse(Call<List<BoboboxAPI>> call, Response<List<BoboboxAPI>> response) {
                 if(response.isSuccessful()) {
                     List<BoboboxAPI> result = response.body();
-                    Log.d("jumlah result ", String.valueOf(result.size()));
-                    int id;
-                    String namaHotel;
-                    Double rating;
-                    String harga;
-                    String alamat;
-                    String negara;
-                    String position;
                     int i = 0;
                     while (i < result.size()) {
-                        id = result.get(i).getId();
-                        namaHotel = result.get(i).getNamaHotel();
-                        alamat = result.get(i).getAlamat();
-                        harga = result.get(i).getHarga();
-                        negara = result.get(i).getNegara();
-                        rating = result.get(i).getRating();
-                        position = result.get(i).getPosition();
                         boboboxList = new BoboboxList(
-                            id,
-                            namaHotel,
-                            rating,
-                            harga,
-                            alamat,
-                            negara,
-                            position
+                            result.get(i).getId(),
+                            result.get(i).getNamaHotel(),
+                            result.get(i).getRating(),
+                            result.get(i).getHarga(),
+                            result.get(i).getAlamat(),
+                            result.get(i).getNegara(),
+                            result.get(i).getPosition()
                         );
                         boboboxLists.add(boboboxList);
                         i++;
@@ -125,7 +116,7 @@ public class SearchResult extends AppCompatActivity {
     }
 
     private void classChecker() {
-        if(className.equals("com.example.bobobox.bobobox.BookingDate")) {
+        if(className.equals("com.example.bobobox.bobobox.UI.BookingDate")) {
             dateInSearch.setText(incomingIntent.getStringExtra("dateInDay").substring(0,3)+", "+incomingIntent.getStringExtra("dateIn"));
             dateOutSearch.setText(incomingIntent.getStringExtra("dateOutDay").substring(0,3)+", "+incomingIntent.getStringExtra("dateOut"));
             monthYearInSearch.setText(months[Integer.parseInt(incomingIntent.getStringExtra("monthIn"))]+" "+incomingIntent.getStringExtra("yearIn"));
@@ -150,7 +141,7 @@ public class SearchResult extends AppCompatActivity {
             sharedPreference.saveHourOut(SearchResult.this, hourOutSearch.getText().toString());
         }
 
-        if(className.equals("com.example.bobobox.bobobox.BookingHour")) {
+        if(className.equals("com.example.bobobox.bobobox.UI.BookingHour")) {
             dateInSearch.setText(incomingIntent.getStringExtra("hourInDay").substring(0,3)+", "+incomingIntent.getStringExtra("hourDateIn"));
             dateOutSearch.setText(incomingIntent.getStringExtra("hourOutDay").substring(0,3)+", "+incomingIntent.getStringExtra("hourDateOut"));
             monthYearInSearch.setText(months[Integer.parseInt(incomingIntent.getStringExtra("hourMonth"))]+", "+incomingIntent.getStringExtra("hourYear"));
@@ -173,6 +164,9 @@ public class SearchResult extends AppCompatActivity {
         }
         city = incomingIntent.getStringExtra("city");
         roomPosition = incomingIntent.getStringExtra("roomPosition");
+        sharedPreference.savePosition(SearchResult.this, roomPosition);
+        sharedPreference.saveNumberGuest(SearchResult.this, numberPersonSearch.getText().toString());
+        sharedPreference.saveNumberRoom(SearchResult.this, numberRoomSearch.getText().toString());
     }
 
     private void initialVariable() {

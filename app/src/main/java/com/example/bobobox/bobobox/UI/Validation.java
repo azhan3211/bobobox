@@ -1,12 +1,12 @@
-package com.example.bobobox.bobobox;
+package com.example.bobobox.bobobox.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
 import com.alimuzaffar.lib.pin.PinEntryEditText;
+import com.example.bobobox.bobobox.R;
 
 
 /**

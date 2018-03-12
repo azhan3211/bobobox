@@ -1,28 +1,24 @@
-package com.example.bobobox.bobobox;
+package com.example.bobobox.bobobox.UI;
 
-import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.annotation.IntegerRes;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.example.bobobox.bobobox.Data.SharedPreference;
+import com.example.bobobox.bobobox.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -45,7 +41,7 @@ public class BookingHour extends AppCompatActivity implements View.OnClickListen
     private EditText room;
     private EditText person;
 
-    private EditText city;
+//    private EditText city;
 
     private static String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
@@ -69,18 +65,21 @@ public class BookingHour extends AppCompatActivity implements View.OnClickListen
 
     private ImageView skyPosition, earthPosition;
 
+    private AutoCompleteTextView citiesACTV;
     private int numberRoom = 0;
     private int numberPerson = 0;
 
     private Button btnSearch;
 
     private String roomPosition = "sky";
+    private static String[] cities = {"Bandung", "Jakarta"};
 
     private SharedPreference sharedPreference = new SharedPreference();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.booking_hour_layout);
+        sharedPreference.saveBookingType(BookingHour.this, "2");
 
         initialVariable();
 
@@ -276,7 +275,7 @@ public class BookingHour extends AppCompatActivity implements View.OnClickListen
         room = (EditText) findViewById(R.id.hourNumberRoom);
         person = (EditText) findViewById(R.id.hourNumberPerson);
 
-        city = (EditText) findViewById(R.id.boboboxBCityHourET);
+//        city = (EditText) findViewById(R.id.boboboxBCityHourET);
 
         dateSelectRL = (RelativeLayout) findViewById(R.id.hourDateSelectRL);
         timeS = (LinearLayout) findViewById(R.id.timeStart);
@@ -290,6 +289,16 @@ public class BookingHour extends AppCompatActivity implements View.OnClickListen
         dayTV.setText(dayOfWeek);
 
         btnSearch = (Button) findViewById(R.id.btnSearchHour);
+        citiesACTV = (AutoCompleteTextView) findViewById(R.id.boboboxBHCityACTV);
+        citiesACTV.setAdapter(new ArrayAdapter(BookingHour.this, android.R.layout.simple_list_item_1, cities));
+        citiesACTV.setThreshold(1);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(getIntent().getStringExtra("city") != null)
+            citiesACTV.setText(getIntent().getStringExtra("city"));
     }
 
     @Override
@@ -297,7 +306,9 @@ public class BookingHour extends AppCompatActivity implements View.OnClickListen
         switch (view.getId()){
             case R.id.hourDateSelectRL:
                 intent = new Intent(BookingHour.this, BookingCalendar.class);
-                intent.putExtra("class","com.example.bobobox.bobobox.BookingHour");
+                intent.putExtra("class","com.example.bobobox.bobobox.UI.BookingHour");
+                if(!citiesACTV.getText().equals(""))
+                    intent.putExtra("city", citiesACTV.getText().toString());
                 startActivity(intent);
                 break;
             case R.id.timeStart:
@@ -308,7 +319,7 @@ public class BookingHour extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.btnSearchHour:
                 intent = new Intent(BookingHour.this, SearchResult.class);
-                intent.putExtra("class","com.example.bobobox.bobobox.BookingHour");
+                intent.putExtra("class","com.example.bobobox.bobobox.UI.BookingHour");
                 intent.putExtra("hourDateIn", dateTV.getText().toString());
                 intent.putExtra("hourDateOut", dateTV.getText().toString());
                 intent.putExtra("hourYear", String.valueOf(mYear));
@@ -317,7 +328,7 @@ public class BookingHour extends AppCompatActivity implements View.OnClickListen
                 intent.putExtra("hourOutDay", dayTV.getText().toString());
                 intent.putExtra("hourIn",timeSS.getText().toString());
                 intent.putExtra("hourOut", timeES.getText().toString());
-                intent.putExtra("city", city.getText().toString());
+                intent.putExtra("city", citiesACTV.getText().toString());
 
                 if(person.getText().toString().equals(""))
                     intent.putExtra("numberPerson", "1");
@@ -330,9 +341,9 @@ public class BookingHour extends AppCompatActivity implements View.OnClickListen
                     intent.putExtra("numberRoom", room.getText().toString());
 
                 if(roomPosition.equals("sky"))
-                    intent.putExtra("roomPosition", "sky");
+                    intent.putExtra("roomPosition", "Sky");
                 else
-                    intent.putExtra("roomPosition", "earth");
+                    intent.putExtra("roomPosition", "Earth");
                 startActivity(intent);
                 break;
             case R.id.boboboxBHEarthIV:

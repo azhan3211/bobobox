@@ -1,5 +1,6 @@
-package com.example.bobobox.bobobox;
+package com.example.bobobox.bobobox.UI;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.support.design.widget.TabLayout;
@@ -8,7 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 
@@ -18,6 +18,7 @@ import com.example.bobobox.bobobox.Fragments.FragmentMyProfil;
 import com.example.bobobox.bobobox.Fragments.FragmentHome;
 import com.example.bobobox.bobobox.Fragments.FragmentControlBox;
 import com.example.bobobox.bobobox.Fragments.FragmentMyBooking;
+import com.example.bobobox.bobobox.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -93,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         sharedPreference.removeAllValue(MainActivity.this);
+        Intent intent = getIntent();
+        intent.replaceExtras(new Bundle());
+        intent.setAction("");
+        intent.setData(null);
+        intent.setFlags(0);
     }
 
     private void initialTab(){

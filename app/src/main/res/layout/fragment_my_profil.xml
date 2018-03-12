@@ -37,7 +37,7 @@
                         android:textColor="@color/colorTextTheme"
                         android:textSize="18sp"
                         android:text="Agung Mahesa Y"
-                        android:id="@+id/bobobxMPUsernameTV"
+                        android:id="@+id/boboboxMPUsernameTV"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="match_parent"
@@ -51,6 +51,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="+62 81286948177"
+                        android:id="@+id/boboboxMPPhoneTV"
                         android:textColor="@color/colorTextTheme"
                         android:textSize="14sp"/>
                 </LinearLayout>
@@ -164,6 +165,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/boboboxLogoutBtn"
                     android:text="Logout"
                     android:textSize="18sp"
                     android:textStyle="bold"
